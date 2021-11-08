@@ -52,8 +52,6 @@ ${stylesCode}
 import __vue2_normalizer from "${vueComponentNormalizer}"
 var __component__ = /*#__PURE__*/__vue2_normalizer(
   __vue2_script,
-  null,
-  null,
   ${hasFunctional ? `true` : `false`},
   __vue2_injectStyles,
   ${scoped ? JSON.stringify(descriptor.id) : `null`},

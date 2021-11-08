@@ -6,8 +6,6 @@
 export const normalizeComponentCode = `
 export default function normalizeComponent (
     scriptExports,
-    render,
-    staticRenderFns,
     functionalTemplate,
     injectStyles,
     scopeId,
@@ -18,13 +16,6 @@ export default function normalizeComponent (
   var options = typeof scriptExports === 'function'
       ? scriptExports.options
       : scriptExports
-
-  // render functions
-  if (render) {
-    options.render = render
-    options.staticRenderFns = staticRenderFns
-    options._compiled = true
-  }
 
   // functional template
   if (functionalTemplate) {
