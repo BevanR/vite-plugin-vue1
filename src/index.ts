@@ -155,7 +155,8 @@ export function createVue1Plugin(rawOptions: VueViteOptions = {}): Plugin {
       // sub block request
       if (query.type === 'template') {
         const escaped = code
-          .replace(/(\r\n|\n|\r)/gm, '')
+          .replace(/(\r\n|\n|\r)/gm, ' ')
+          .replaceAll('\\', '\\\\')
           .replaceAll("'", "\\'")
         return {
           code: `export default '${escaped}';`,
