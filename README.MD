@@ -1,20 +1,18 @@
-# vite-plugin-vue2
+# vite-plugin-vue1
 
-[![NPM version](https://img.shields.io/npm/v/vite-plugin-vue2?color=a1b858&label=)](https://www.npmjs.com/package/vite-plugin-vue2)
+Unsupported.
+
+Forked and hacked from vite-plugin-vue2
 
 ## Install
 
-```bash
-npm install vite-plugin-vue2 -D
-```
-
 ```js
 // vite.config.js
-import { createVuePlugin } from 'vite-plugin-vue2'
+import { createVue1Plugin } from 'vite-plugin-vue1'
 
 export default {
   plugins: [
-    createVuePlugin(/* options */)
+    createVue1Plugin(/* options */)
   ],
 }
 ```

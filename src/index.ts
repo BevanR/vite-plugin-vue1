@@ -50,7 +50,7 @@ export interface ResolvedOptions extends VueViteOptions {
   target?: string
 }
 
-export function createVuePlugin(rawOptions: VueViteOptions = {}): Plugin {
+export function createVue1Plugin(rawOptions: VueViteOptions = {}): Plugin {
   const options: ResolvedOptions = {
     isProduction: process.env.NODE_ENV === 'production',
     ...rawOptions,
