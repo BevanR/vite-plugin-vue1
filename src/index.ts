@@ -1,17 +1,15 @@
-import { TemplateCompileOptions } from '@vue/component-compiler-utils'
-import { normalizeComponentCode } from './utils/componentNormalizer'
-import { vueHotReloadCode } from './utils/vueHotReload'
-import fs from 'fs'
-import { parseVueRequest } from './utils/query'
 import { createFilter } from '@rollup/pluginutils'
-import { transformMain } from './main'
-import { compileSFCTemplate } from './template'
-import { getDescriptor } from './utils/descriptorCache'
-import { transformStyle } from './style'
-import { ViteDevServer, Plugin } from 'vite'
-import { SFCBlock } from '@vue/component-compiler-utils'
+import { SFCBlock, TemplateCompileOptions } from '@vue/component-compiler-utils'
+import fs from 'fs'
+import { Plugin, ViteDevServer } from 'vite'
 import { handleHotUpdate } from './hmr'
 import { transformVueJsx } from './jsxTransform'
+import { transformMain } from './main'
+import { transformStyle } from './style'
+import { normalizeComponentCode } from './utils/componentNormalizer'
+import { getDescriptor } from './utils/descriptorCache'
+import { parseVueRequest } from './utils/query'
+import { vueHotReloadCode } from './utils/vueHotReload'
 
 export const vueComponentNormalizer = '\0/vite/vueComponentNormalizer'
 export const vueHotReload = '\0/vite/vueHotReload'
@@ -156,13 +154,14 @@ export function createVuePlugin(rawOptions: VueViteOptions = {}): Plugin {
       const descriptor = getDescriptor(query.from || filename)!
       // sub block request
       if (query.type === 'template') {
-        return compileSFCTemplate(
-          code,
-          descriptor.template!,
-          filename,
-          options,
-          this
-        )
+        const escaped = code
+          .replace(/(\r\n|\n|\r)/gm, '')
+          .replaceAll("'", "\\'")
+        // const escaped = '<div>Hello3</div>'
+        return {
+          code: `export default '${escaped}';`,
+          map: null,
+        }
       }
       if (query.type === 'style') {
         return await transformStyle(

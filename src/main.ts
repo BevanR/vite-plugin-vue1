@@ -52,8 +52,8 @@ ${stylesCode}
 import __vue2_normalizer from "${vueComponentNormalizer}"
 var __component__ = /*#__PURE__*/__vue2_normalizer(
   __vue2_script,
-  __vue2_render,
-  __vue2_staticRenderFns,
+  null,
+  null,
   ${hasFunctional ? `true` : `false`},
   __vue2_injectStyles,
   ${scoped ? JSON.stringify(descriptor.id) : `null`},
@@ -71,6 +71,13 @@ function __vue2_injectStyles (context) {
 
   // custom block
   result += await genCustomBlockCode(filePath, descriptor, pluginContext)
+
+  // TODO Which one?
+  result += `\n__component__.options.__template = __template`
+  result += `\n__component__.options.template = __template`
+  result += `\n__component__.__template = __template`
+  result += `\n__component__.template = __template`
+
   // Expose filename. This is used by the devtools and Vue runtime warnings.
   if (!options.isProduction) {
     // Expose the file's full path in development, so that it can be opened
@@ -192,7 +199,7 @@ async function genTemplateRequest(
   const query = `?vue${from}&type=template${srcQuery}${attrsQuery}`
   const templateRequest = src + query
   return {
-    code: `import { render as __vue2_render, staticRenderFns as __vue2_staticRenderFns } from '${templateRequest}'`,
+    code: `import __template from '${templateRequest}'`,
     templateRequest,
   }
 }
@@ -231,7 +238,7 @@ function genHmrCode(
 ) {
   return `\n/* hot reload */
 import __VUE_HMR_RUNTIME__ from "${vueHotReload}"
-import vue from "vue"
+import vue from "vueVersion1"
 __VUE_HMR_RUNTIME__.install(vue)
 if(__VUE_HMR_RUNTIME__.compatible){
   if (!__VUE_HMR_RUNTIME__.isRecorded('${id}')) {
