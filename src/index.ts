@@ -157,7 +157,6 @@ export function createVuePlugin(rawOptions: VueViteOptions = {}): Plugin {
         const escaped = code
           .replace(/(\r\n|\n|\r)/gm, '')
           .replaceAll("'", "\\'")
-        // const escaped = '<div>Hello3</div>'
         return {
           code: `export default '${escaped}';`,
           map: null,

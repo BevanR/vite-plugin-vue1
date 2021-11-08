@@ -69,14 +69,10 @@ function __vue2_injectStyles (context) {
   }
 }\n`
 
+  result += `__component__.options.template = __template\n`
+
   // custom block
   result += await genCustomBlockCode(filePath, descriptor, pluginContext)
-
-  // TODO Which one?
-  result += `\n__component__.options.__template = __template`
-  result += `\n__component__.options.template = __template`
-  result += `\n__component__.__template = __template`
-  result += `\n__component__.template = __template`
 
   // Expose filename. This is used by the devtools and Vue runtime warnings.
   if (!options.isProduction) {
