@@ -19,7 +19,7 @@ __VUE_HMR_RUNTIME__.install = function (vue, browserify) {
 	isBrowserify = browserify
 
 	// compat with < 2.0.0-alpha.7
-	if (Vue.config._lifecycleHooks.indexOf('init') > -1) {
+	if (Vue.config._lifecycleHooks?.indexOf('init') > -1) {
 		initHookName = 'init'
 	}
 
