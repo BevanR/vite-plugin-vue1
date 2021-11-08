@@ -167,7 +167,7 @@ async function genScriptCode(
       const attrsQuery = attrsToQuery(script.attrs, langFallback)
       const srcQuery = script.src ? `&src` : ``
       const from = script.src ? `&from=${filename}` : ''
-      const query = `?vue&type=script${srcQuery}${from}${attrsQuery}`
+      const query = `?vue1&type=script${srcQuery}${from}${attrsQuery}`
       const request = JSON.stringify(src + query)
       scriptCode =
         `import ${scriptVar} from ${request}\n` + `export * from ${request}` // support named exports
@@ -192,7 +192,7 @@ async function genTemplateRequest(
   const srcQuery = template.src ? `&src` : ``
   const from = template.src ? `&from=${filename}` : ''
   const attrsQuery = attrsToQuery(template.attrs, 'js', true)
-  const query = `?vue${from}&type=template${srcQuery}${attrsQuery}`
+  const query = `?vue1${from}&type=template${srcQuery}${attrsQuery}`
   const templateRequest = src + query
   return {
     code: `import __template from '${templateRequest}'`,
@@ -217,7 +217,7 @@ async function genCustomBlockCode(
       )
       const srcQuery = block.attrs.src ? `&src` : ``
       const from = block.attrs.src ? `&from=${filename}` : ''
-      const query = `?vue&type=${block.type}&index=${index}${srcQuery}${from}${attrsQuery}`
+      const query = `?vue1&type=${block.type}&index=${index}${srcQuery}${from}${attrsQuery}`
       const request = JSON.stringify(src + query)
       code += `import block${index} from ${request}\n`
       code += `if (typeof block${index} === 'function') block${index}(__component__)\n`
@@ -274,7 +274,7 @@ async function genStyleRequest(
     const attrsQuery = attrsToQuery(style.attrs, 'css')
     const srcQuery = style.src ? `&src` : ``
     const from = style.src ? `&from=${filename}` : ''
-    const query = `?vue&type=style&index=${i}${from}${srcQuery}`
+    const query = `?vue1&type=style&index=${i}${from}${srcQuery}`
     const styleRequest = src + query + attrsQuery
     if (style.scoped) scoped = true
     if (style.module) {

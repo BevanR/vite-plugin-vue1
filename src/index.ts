@@ -57,10 +57,10 @@ export function createVuePlugin(rawOptions: VueViteOptions = {}): Plugin {
     root: process.cwd(),
   }
 
-  const filter = createFilter(options.include || /\.vue$/, options.exclude)
+  const filter = createFilter(options.include || /\.vue1$/, options.exclude)
 
   return {
-    name: 'vite-plugin-vue2',
+    name: 'vite-plugin-vue1',
 
     config(config) {
       if (options.jsx) {
@@ -93,8 +93,8 @@ export function createVuePlugin(rawOptions: VueViteOptions = {}): Plugin {
       if (id === vueComponentNormalizer || id === vueHotReload) {
         return id
       }
-      // serve subpart requests (*?vue) as virtual modules
-      if (parseVueRequest(id).query.vue) {
+      // serve subpart requests (*?vue1) as virtual modules
+      if (parseVueRequest(id).query.vue1) {
         return id
       }
     },
@@ -110,7 +110,7 @@ export function createVuePlugin(rawOptions: VueViteOptions = {}): Plugin {
 
       const { filename, query } = parseVueRequest(id)
       // select corresponding block for subpart virtual modules
-      if (query.vue) {
+      if (query.vue1) {
         if (query.src) {
           return fs.readFileSync(filename, 'utf-8')
         }
@@ -142,11 +142,11 @@ export function createVuePlugin(rawOptions: VueViteOptions = {}): Plugin {
         return transformVueJsx(code, id, options.jsxOptions)
       }
 
-      if ((!query.vue && !filter(filename)) || query.raw) {
+      if ((!query.vue1 && !filter(filename)) || query.raw) {
         return
       }
 
-      if (!query.vue) {
+      if (!query.vue1) {
         // main request
         return await transformMain(code, filename, options, this)
       }
