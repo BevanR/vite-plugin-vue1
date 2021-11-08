@@ -18,12 +18,9 @@ __VUE_HMR_RUNTIME__.install = function (vue, browserify) {
 	version = Vue.version.split('.').map(Number)
 	isBrowserify = browserify
 
-	// compat with < 2.0.0-alpha.7
-	if (Vue.config._lifecycleHooks.indexOf('init') > -1) {
-		initHookName = 'init'
-	}
+	console.log(version)
 
-	__VUE_HMR_RUNTIME__.compatible = version[0] >= 2
+	__VUE_HMR_RUNTIME__.compatible = true
 	if (!__VUE_HMR_RUNTIME__.compatible) {
 		console.warn(
 			'[HMR] You are using a version of vue-hot-reload-api that is ' +
@@ -151,14 +148,12 @@ __VUE_HMR_RUNTIME__.rerender = tryWrap(function (id, options) {
 		options = options.options
 	}
 	if(record.functional){
-		record.render = options.render
-		record.staticRenderFns = options.staticRenderFns
+		record.template = options.template
 		__VUE_HMR_RUNTIME__.reload(id, record)
 		return
 	}
 	if (record.Ctor) {
-		record.Ctor.options.render = options.render
-		record.Ctor.options.staticRenderFns = options.staticRenderFns
+		record.Ctor.options.template = options.template
 		record.instances.slice().forEach(function (instance) {
 			instance.$options.render = options.render
 			instance.$options.staticRenderFns = options.staticRenderFns
