@@ -1,3 +1,12 @@
+## [0.0.7](https://github.com/underfin/vite-plugin-vue2/compare/v0.0.6...v0.0.7) (2021-12-13)
+
+
+### Reverts
+
+* Revert "remove dependency on template-compiler" ([d28f3f4](https://github.com/underfin/vite-plugin-vue2/commit/d28f3f4ceb6f30d5ad8e4f903c12b30af0992ce3))
+
+
+
 ## [0.0.6](https://github.com/underfin/vite-plugin-vue2/compare/v0.0.5...v0.0.6) (2021-12-13)
 
 
