@@ -1,3 +1,12 @@
+## [0.0.10](https://github.com/underfin/vite-plugin-vue2/compare/v0.0.9...v0.0.10) (2021-12-13)
+
+
+### Reverts
+
+* Revert "drop compiler peer dependency" ([0e59bf5](https://github.com/underfin/vite-plugin-vue2/commit/0e59bf50136d5bef587f97eae7ef322e53de10f8))
+
+
+
 ## [0.0.9](https://github.com/underfin/vite-plugin-vue2/compare/v0.0.8...v0.0.9) (2021-12-13)
 
 
