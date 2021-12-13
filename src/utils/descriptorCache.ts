@@ -2,7 +2,6 @@ import path from 'path'
 import slash from 'slash'
 import hash from 'hash-sum'
 import { parse, SFCDescriptor } from '@vue/component-compiler-utils'
-import * as vueTemplateCompiler from 'vue-template-compiler'
 import { ResolvedOptions } from '../index'
 
 const cache = new Map<string, SFCDescriptor>()
@@ -15,7 +14,7 @@ export function createDescriptor(
 ) {
   const descriptor = parse({
     source,
-    compiler: vueTemplateOptions?.compiler || (vueTemplateCompiler as any),
+    compiler: vueTemplateOptions?.compiler as any,
     filename,
     sourceRoot: root,
     needMap: true,
