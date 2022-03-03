@@ -253,8 +253,6 @@ if(__VUE_HMR_RUNTIME__.compatible){
    })`
        : ''
    }
-} else {
-  console.log("The hmr is not compatible.")
 }`
 }
 
