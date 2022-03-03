@@ -1,3 +1,7 @@
+## [0.0.12](https://github.com/underfin/vite-plugin-vue2/compare/v0.0.11...v0.0.12) (2022-03-03)
+
+
+
 ## [0.0.11](https://github.com/underfin/vite-plugin-vue2/compare/v0.0.10...v0.0.11) (2022-03-03)
 
 
