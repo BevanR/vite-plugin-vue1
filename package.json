@@ -18,11 +18,11 @@
     "vite",
     "vue1"
   ],
-  "author": "underfin",
+  "author": "underfin & BevanR",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/underfin/vite-plugin-vue2"
+    "url": "git+https://github.com/BevanR/vite-plugin-vue1"
   },
   "gitHooks": {
     "pre-commit": "lint-staged"
