@@ -1,3 +1,7 @@
+## [0.0.14](https://github.com/BevanR/vite-plugin-vue1/compare/v0.0.13...v0.0.14) (2024-04-11)
+
+
+
 ## [0.0.13](https://github.com/BevanR/vite-plugin-vue1/compare/v0.0.12...v0.0.13) (2024-04-11)
 
 
